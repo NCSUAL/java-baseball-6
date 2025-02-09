@@ -1,26 +1,47 @@
 package baseball.controller;
-
+import baseball.dto.CompareDto;
 import baseball.model.Systemball;
 import baseball.model.Userball;
-import baseball.view.InputView;
-import baseball.view.OutView;
+
+import static baseball.utils.BaseballUtil.*;
+import static baseball.view.InputView.*;
+import static baseball.view.OutView.*;
+
+import java.util.Arrays;
 
 public class BaseballController {
 	
-	private static Systemball systemBall;
+	private static Systemball systemball;
 	
 	public static void run() {
-		//DI(setter)
-		setBaseball();
-		
-		OutView.startInfo();
-		OutView.inputInfo();
-		
-		Userball userball = Userball.of(InputView.inputNumber());
-		
+		while(play()) {}
 	}
 	
 	private static void setBaseball() {
-		systemBall = new Systemball();
+		systemball = new Systemball();
 	}
+	
+	
+	private static boolean play() {
+		//DI(setter)
+		setBaseball();
+		startInfo();
+		while(true) {
+			inputInfo();
+			Userball userball = Userball.of(inputNumber());
+			CompareDto compare = compareBaseball(userball, systemball);
+			
+			compareInfo(compare);
+			
+			if(compare.isThreeStrike()) {
+				resultInfo();
+				if(inputResultNumber().isRestart()) {
+					return true;
+				}
+				exitInfo();
+				return false;
+			}
+		}
+	}
+	
 }

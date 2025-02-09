@@ -3,7 +3,9 @@ package baseball.constant;
 public enum Status {
 	
 	ERROR("[ERROR] "),
-	INFO("[INFO] ");
+	INFO("[INFO] "),
+	TEST("[TEST] "),
+	EXIT("[EXIT] ");
 	
 	private final String status;
 	
@@ -11,7 +13,8 @@ public enum Status {
 		this.status = status;
 	}
 	
-	public String getStatus() {
+	@Override
+	public String toString() {
 		return this.status;
 	}
 }
