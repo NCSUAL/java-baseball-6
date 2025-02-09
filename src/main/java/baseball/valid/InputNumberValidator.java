@@ -12,9 +12,16 @@ public class InputNumberValidator {
 	
 	public String numberValidator(){
 		formattingValid();
-		lengthValid();
-		valueValid();
-		duplicationValid();
+		numberLengthValid();
+		numberValueValid();
+		numberDuplicationValid();
+		return this.number;
+	}
+	
+	public String resultNumberValidator(){
+		formattingValid();
+		resultNumberLengthValid();
+		resultNumberValueValid();
 		return this.number;
 	}
 	
@@ -24,35 +31,50 @@ public class InputNumberValidator {
 		}
 		catch (NumberFormatException ex) {
 			// TODO: handle exception
-			throw new IllegalArgumentException(Log.NUMBERINPUTERROR.getMessage());
+			throw new IllegalArgumentException(Log.NUMBERINPUTERROR.toString());
 		}
 	}
 	
-	private void lengthValid() {
+	private void resultNumberLengthValid() {
+		if(this.number.length() != 1) {
+			throw new IllegalArgumentException(Log.RESULTNUMBERINPUTERROR.toString());
+		}
+	}
+	
+	private void resultNumberValueValid() {
+		char c = this.number.charAt(0);
+		if(c<49 || c> 57) {
+			throw new IllegalArgumentException(Log.RESULTNUMBERINPUTERROR.toString());
+		}
+	}
+	
+	
+	private void numberLengthValid() {
 		if(this.number.length() != 3) {
-			throw new IllegalArgumentException(Log.NUMBERVALIDERROR.getMessage());
+			throw new IllegalArgumentException(Log.NUMBERVALIDERROR.toString());
 		}
 	}
 	
-	private void valueValid() {
-		if(this.number.contains("0")) {
-			throw new IllegalArgumentException(Log.NUMBERINPUTERROR.getMessage());
+	private void numberValueValid() {
+		for(int a=0; a<this.number.length(); a++) {
+			char c = this.number.charAt(a);
+			if(c<49 || c>57) {
+				throw new IllegalArgumentException(Log.NUMBERINPUTERROR.toString());
+			}
 		}
 	}
 	
-	private void duplicationValid() {
-		final int[] array = new int[10];
+	private void numberDuplicationValid() {
+		final boolean[] array = new boolean[10];
 		int number= Integer.parseInt(this.number);
 		
 		while(number>0) {
-			array[number%10] +=1;
-			number/=10;
-		}
-		
-		for(int arg: array) {
-			if(arg>1) {
-				throw new IllegalArgumentException(Log.NUMBERVALIDERROR.getMessage());
+			final int index = number%10;
+			if(array[index]) {
+				throw new IllegalArgumentException(Log.NUMBERVALIDERROR.toString());
 			}
+			array[index] = true;
+			number/=10;
 		}
 	}
 }

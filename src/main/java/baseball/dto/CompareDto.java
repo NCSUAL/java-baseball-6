@@ -29,10 +29,10 @@ public class CompareDto {
 	@Override
 	public String toString() {
 		if(this.ball > 0 && this.strike>0) {
-			return Integer.toString(this.ball)+Result.Ball+Result.GAP+Integer.toString(this.strike)+Result.STRIKE;
+			return Integer.toString(this.ball)+Result.BALL+Result.GAP+Integer.toString(this.strike)+Result.STRIKE;
 		}
 		if(this.ball>0) {
-			return Integer.toString(this.ball)+Result.Ball;
+			return Integer.toString(this.ball)+Result.BALL;
 		}
 		if(this.strike>0) {
 			return Integer.toString(this.strike)+Result.STRIKE;
