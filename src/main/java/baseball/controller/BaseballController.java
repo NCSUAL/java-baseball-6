@@ -2,27 +2,24 @@ package baseball.controller;
 import baseball.dto.CompareDto;
 import baseball.model.Systemball;
 import baseball.model.Userball;
-
 import static baseball.utils.BaseballUtil.*;
 import static baseball.view.InputView.*;
 import static baseball.view.OutView.*;
-
-import java.util.Arrays;
 
 public class BaseballController {
 	
 	private static Systemball systemball;
 	
-	public static void run() {
+	public void run() {
 		while(play()) {}
 	}
 	
-	private static void setBaseball() {
+	private void setBaseball() {
 		systemball = new Systemball();
 	}
 	
 	
-	private static boolean play() {
+	private boolean play() {
 		//DI(setter)
 		setBaseball();
 		startInfo();
