@@ -2,7 +2,7 @@ package baseball.constant;
 
 public enum Result {
 	
-	Ball("볼"),
+	BALL("볼"),
 	STRIKE("스트라이크"),
 	NOTING("낫싱"),
 	GAP(" ");
