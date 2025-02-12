@@ -13,6 +13,9 @@ public enum Log {
 	NUMBERINPUTERROR("유효한 값이 아닙니다. 1~9 수를 입력해야 합니다. ", Status.ERROR),
 	NUMBERVALIDERROR("서로 다른 3자리의 수를 입력해야 합니다.", Status.ERROR),
 	
+	SYSTEMBALLINFOTEST("시스템이 뽑은 숫자: ",Status.TEST),
+	USERINFOTEST("사용자가 뽑은 숫자: ",Status.TEST),
+	
 	EXIT("프로그램을 종료합니다..",Status.EXIT);
 	
 	private final String message;

@@ -1,13 +1,12 @@
 package baseball.model;
 
-
 //immutable
 public class Userball {
 	
-	private final String userBall;
+	private final String baseball;
 	
-	public Userball(final String userBall) {
-		this.userBall = userBall;
+	public Userball(final String baseball) {
+		this.baseball = baseball;
 	}
 	
 	public static Userball of(final String input) {
@@ -15,6 +14,11 @@ public class Userball {
 	}
 	
 	public String getUserBall() {
-		return this.userBall;
+		return this.baseball;
+	}
+	
+	@Override
+	public String toString() {
+		return baseball;
 	}
 }

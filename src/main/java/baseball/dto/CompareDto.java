@@ -1,7 +1,7 @@
 package baseball.dto;
 
 import baseball.constant.Result;
-public class CompareDto {
+public class CompareDto{
 	private final int strike;
 	private final int ball;
 	
@@ -38,5 +38,10 @@ public class CompareDto {
 			return Integer.toString(this.strike)+Result.STRIKE;
 		}
 		return Result.NOTING.toString();
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		return ((CompareDto)o).getBall() == ball && ((CompareDto)o).getStrike() == strike;
 	}
 }
